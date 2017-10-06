@@ -11,6 +11,12 @@ import {AppRoutingModule} from './app-routing/app-routing.module';
 import {FormsModule} from '@angular/forms';
 import {HttpModule} from '@angular/http';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import {AuthenticationService} from './Services/authentication.service';
+import {AuthGuard} from './_guard/auth.guard';
+import { HomeComponent } from './home/home/home.component';
+import {ProductsApiService} from './Services/products.api.service';
+import {ProductsServiceService} from './Services/products-service.service';
+
 
 @NgModule({
   declarations: [
@@ -20,12 +26,13 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     AccountLoginComponent,
     AccountSignupComponent,
     ProductListComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule, AppRoutingModule, FormsModule, HttpModule
   ],
-  providers: [],
+  providers: [AuthenticationService, AuthGuard, ProductsApiService, ProductsServiceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
